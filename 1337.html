@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Leet Translator</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" src="https://gitcdn.link/repo/jgthms/minireset.css/master/minireset.min.css">
+        <style>
+            body {
+                overflow: hidden;
+                font-family: "Quicksand", sans-serif;
+                font-size: 16px;
+	            -moz-osx-font-smoothing: greyscale;
+	            -webkit-font-smoothing: antialiased;
+	            line-height: 1.5;
+	            min-height: 100vh;
+	            min-width: 300px;
+	            overflow-x: hidden;
+	            text-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+                transition: all 1s;
+            }
+
+            textarea {
+                font-family: "Quicksand", sans-serif;
+            }
+
+            .container {
+                text-align: center;
+            }
+
+            .convert {
+                font-family: "Quicksand", sans-serif;
+            }
+
+            @media screen and (max-width: 799px) {
+                textarea {
+                    width: 400px;
+                    height: 200px;
+                    padding: 10px;
+                    border-radius: 5px;
+                    display: block;
+                    margin-left: auto;
+                    margin-right: auto;
+                    padding-bottom: 10px;
+                }
+            }
+
+            @media screen and (min-width: 800px) {
+                textarea {
+                    width: 600px;
+                    height: 300px;
+                    padding: 10px;
+                    border-radius: 5px;
+                    display: block;
+                    margin-left: auto;
+                    margin-right: auto;
+                    padding-bottom: 10px;
+                }
+            }
+
+            body {
+                color: #000000;
+                background-color: #ffffff;
+                background-image: linear-gradient(to bottom right, #f0f0f0, #ffffff); 
+            }    
+
+            .convert {
+                background-color: #ffffff;
+                border-color: #000000;
+                border-width: 2px;
+                color: #000000;
+                border-radius: 10px;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                outline: none !important;
+                box-shadow: none !important;
+            }
+
+            .convert:hover {
+                filter: invert(1);
+            }   
+
+            .theme {
+                position: fixed;
+                border-width: 2px;
+                border-color: #000000;
+                bottom: 70px;
+                right: 70px;
+                background: url("https://cdn3.iconfinder.com/data/icons/meteocons/512/moon-black-512.png") no-repeat;
+                background-size: 62px 62px;
+                background-color: #ffffff;
+                padding: 30px;
+                border-radius: 999999px;
+            }
+
+            .theme:hover {
+                filter: invert(1);
+            } 
+
+            p {
+                color: #000000;
+            }   
+
+            html.dark body {
+                color: #ffffff;
+                background-color: #000000;
+                background-image: linear-gradient(to bottom right, #000000, #222222);
+            }    
+
+            html.dark .convert {
+                background-color: #000000;
+                border-color: #ffffff;
+                border-width: 2px;
+                color: #ffffff;
+                border-radius: 10px;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                outline: none !important;
+                box-shadow: none !important;
+            }
+
+            html.dark .convert:hover {
+                filter: invert(1);
+            } 
+
+            html.dark .theme {
+                position: fixed;
+                border-width: 2px;
+                border-color: #000000;
+                bottom: 70px;
+                right: 70px;
+                background: url("https://cdn3.iconfinder.com/data/icons/meteocons/512/sun-black-512.png") no-repeat;
+                background-size: 61px 61px;
+                background-color: #ffffff;
+                padding: 30px;
+                border-radius: 999999px;
+                filter: invert(1);
+            }
+
+            html.dark .theme:hover {
+                filter: invert(0);
+            }
+
+            html.dark p {
+                color: #ffffff;
+            }         
+
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <script>
+                
+            </script>
+            <script>
+                function textToLeet() {
+                    const textArea = document.getElementById("textarea");
+                    var text = textArea.value.toLowerCase();
+                    const results = document.getElementById("results");
+
+                    const leetAlphabet = {
+                        "a": "4",
+                        "e": "3",
+                        "g": "6",
+                        "i": "1",
+                        "o": "0",
+                        "s": "5",
+                        "t": "7"
+                    }
+
+                    const leetDictionary = {
+                        "owned": "pwned",
+                        "elite": "leet",
+                        "hacker": "haxor",
+						"hackers": "haxors",
+                        "you": "u",
+                        "are": "r",
+                        "you're": "ur",
+                    }
+
+                    var tempText = text.split(" ");
+
+                    for (i = 0; i < tempText.length; i++) {
+                        var word = tempText[i];
+                        word = word.replace(",", "");
+                        if (leetDictionary.hasOwnProperty(word)) {
+                            text = text.replace(word, leetDictionary[word]);
+                        }
+                    }
+
+                    text = text.split("")
+
+                    for (i = 0; i < text.length; i++) {
+                        var letter = text[i];
+
+                        if (leetAlphabet.hasOwnProperty(letter)) {
+                            var index = text.indexOf(letter)
+                            text[index] = leetAlphabet[letter]
+                        }
+                    }
+
+                    text = text.join("")
+
+                    results.innerHTML = `Translated text: ${text}`;
+                }
+
+                function setCookie(cname, cvalue, exdays) {
+                    var d = new Date();
+                    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+                    var expires = "expires="+ d.toUTCString();
+                    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+                }
+
+                function getCookie(cname) {
+                    var name = cname + "=";
+                    var decodedCookie = decodeURIComponent(document.cookie);
+                    var ca = decodedCookie.split(';');
+                    for(var i = 0; i <ca.length; i++) {
+                        var c = ca[i];
+                        while (c.charAt(0) == ' ') {
+                            c = c.substring(1);
+                        }
+                        if (c.indexOf(name) == 0) {
+                            return c.substring(name.length, c.length);
+                        }
+                    }
+                    return "";
+                }
+
+                function toggleTheme() {
+                    document.documentElement.classList.toggle("dark");
+                    if (document.documentElement.classList.contains("dark")) {
+                        setCookie("theme", "dark", 10000);
+                    } else {
+                        setCookie("theme", "light", 10000);
+                    }
+                }
+
+                if (getCookie("theme") == "dark") {
+                    document.documentElement.classList.toggle("dark");
+                } else if (getCookie("theme") == "light")  {
+                    document.documentElement.classList.remove("dark");
+                } else {
+                    var preference = window.matchMedia('(prefers-color-scheme: dark)');
+                    if (preference.matches) {
+	                    // A dark color scheme preference is set so we add the class from our html element
+	                    document.documentElement.classList.add('dark');
+                    } else {
+	                    // No dark color scheme preference is set so we remove the class from our html element
+	                    document.documentElement.classList.remove('dark');
+                    }
+                }
+            </script>
+            <h1>1337 Translator</h1>
+            <p>Enter text to translate into leet speak.</p>
+            <textarea placeholder="Enter text here..." id="textarea"></textarea>
+            <button class="convert" onclick="textToLeet()">Convert</button>
+            <div class="results">
+                <p id="results"></p>
+            </div>
+        </div>
+        <div class="theme-container">
+            <button class="theme" onclick="toggleTheme()"></button>
+        </div>
+    </body>
+
+</html>
