@@ -1,0 +1,146 @@
+body {
+	overflow: hidden;
+	font-family: "Quicksand", sans-serif;
+	font-size: 16px;
+	-moz-osx-font-smoothing: greyscale;
+	-webkit-font-smoothing: antialiased;
+	line-height: 1.5;
+	min-height: 100vh;
+	min-width: 300px;
+	overflow-x: hidden;
+	text-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+	transition: all 1s;
+}
+
+textarea {
+	font-family: "Quicksand", sans-serif;
+}
+
+.container {
+	text-align: center;
+}
+
+.convert {
+	font-family: "Quicksand", sans-serif;
+}
+
+@media screen and (max-width: 799px) {
+	textarea {
+		width: 400px;
+		height: 200px;
+		padding: 10px;
+		border-radius: 5px;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		padding-bottom: 10px;
+	}
+}
+
+@media screen and (min-width: 800px) {
+	textarea {
+		width: 600px;
+		height: 300px;
+		padding: 10px;
+		border-radius: 5px;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		padding-bottom: 10px;
+	}
+}
+
+body {
+	color: #000000;
+	background-color: #ffffff;
+	background-image: linear-gradient(to bottom right, #f0f0f0, #ffffff);
+}
+
+.convert {
+	background-color: #ffffff;
+	border-color: #000000;
+	border-width: 2px;
+	color: #000000;
+	border-radius: 10px;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	outline: none !important;
+	box-shadow: none !important;
+}
+
+.convert:hover {
+	filter: invert(1);
+}
+
+.theme {
+	position: fixed;
+	border-width: 2px;
+	border-color: #000000;
+	bottom: 70px;
+	right: 70px;
+	background: url("https://cdn3.iconfinder.com/data/icons/meteocons/512/moon-black-512.png") no-repeat;
+	background-size: 62px 62px;
+	background-color: #ffffff;
+	padding: 30px;
+	border-radius: 999999px;
+}
+
+.theme:hover {
+	filter: invert(1);
+}
+
+p {
+	color: #000000;
+}
+
+html.dark body {
+	color: #ffffff;
+	background-color: #000000;
+	background-image: linear-gradient(to bottom right, #000000, #222222);
+}
+
+html.dark .convert {
+	background-color: #000000;
+	border-color: #ffffff;
+	border-width: 2px;
+	color: #ffffff;
+	border-radius: 10px;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	outline: none !important;
+	box-shadow: none !important;
+}
+
+html.dark .convert:hover {
+	filter: invert(1);
+}
+
+html.dark .theme {
+	position: fixed;
+	border-width: 2px;
+	border-color: #000000;
+	bottom: 70px;
+	right: 70px;
+	background: url("https://cdn3.iconfinder.com/data/icons/meteocons/512/sun-black-512.png") no-repeat;
+	background-size: 61px 61px;
+	background-color: #ffffff;
+	padding: 30px;
+	border-radius: 999999px;
+	filter: invert(1);
+}
+
+html.dark .theme:hover {
+	filter: invert(0);
+}
+
+html.dark p {
+	color: #ffffff;
+}
