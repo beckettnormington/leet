@@ -1,2 +1,3 @@
-# text-to-leet
-Sorry for inline styles...
+# Leet Translator
+
+Turns text into simple leetspeak.
